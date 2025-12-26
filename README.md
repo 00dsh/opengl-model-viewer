@@ -13,4 +13,4 @@ functionality for loading models, then implement them elsewhere in other games/p
 - Camera system
 - Loading models without crashing (most of the time)
 
-***Logiiq.***
+***dsh.***
