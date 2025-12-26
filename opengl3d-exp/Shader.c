@@ -288,7 +288,7 @@ const char *getStringFromFile(const char *file_path)
 			f = NULL;
 			printf("ERROR: Freed memory and set nullptrs\n");
 		}
-		printf("%s\n", buf); // debug
+		//printf("%s\n", buf); // debug
 		return buf;
 	}
 	else if (error_code)
