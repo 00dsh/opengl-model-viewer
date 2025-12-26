@@ -143,8 +143,6 @@ Model_t scene_setup_mesh(const Mesh_t *mesh)
 	return tmp;
 }
 
-void mesh_free(Mesh_t *meshes, unsigned int size);
-
 Model_t *scene_load(const char *fpath, unsigned int *nrMeshes)
 {
 	const struct aiScene *scene = aiImportFile(fpath,

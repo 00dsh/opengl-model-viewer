@@ -41,4 +41,6 @@ Model_t *scene_load(const char *fpath, unsigned int *nrMeshes);
 
 void scene_draw(Model_t *models, unsigned int size, Shader_t *shader);
 
+void mesh_free(Mesh_t *meshes, unsigned int size);
+
 #endif

@@ -15,6 +15,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "Monitor.h"
 #include "Input.h"
 #include "Shader.h"
 #include "Time.h"
@@ -24,11 +25,6 @@
 #include "Cube.h"
 
 #define DEBUG_MODE 0
-
-int msgbox_show(const WCHAR *prompt, const WCHAR *title)
-{
-	int msgboxID = MessageBox(NULL, (LPCWSTR)prompt, (LPCWSTR)title, MB_ICONINFORMATION | MB_OK);
-}
 
 void log_verbose(const char *message)
 {
@@ -76,7 +72,7 @@ void init(void)
 	// Initialize GLFW
 	if (!glfwInit())
 	{
-		printf("Unable to initialize GLFW");
+		printf("Unable to initialize GLFW\n");
 		glfwTerminate();
 	}
 
@@ -101,12 +97,13 @@ void init(void)
 		glfwTerminate();
 	}
 
-	glViewport(0, 0, width, height);
+	monitor_init();
 
-	input_init(); // Initialize input
+	input_init();
 	
 	// Create a new new shader, return shader struct
 	shader = shader_new("shader/vertex.glsl", "shader/fragment.glsl");
+	shader_init(&shader);
 	shader_use(&shader);
 
 	cam = camera_new(0.0f, 0.0f, 3.0f, 0.0f, -90.0f);
@@ -130,14 +127,13 @@ void init(void)
 inline void initScene(void)
 {
 	skybox_setfull("texture/skybox/full.jpg");
-	//c = cube_new(0.0f, 0.0f, 0.0f);
+	c = cube_new(0.0f, 0.0f, 0.0f);
 
 	scene = scene_load(modelPath, &numMeshes);
-	printf("here\n");
 
 	if (!scene)
 	{
-		printf("ERROR: Scene could not load");
+		printf("ERROR: Scene could not load\n");
 	}
 }
 
@@ -151,9 +147,9 @@ void loop(void)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		camera_update(&cam, &shader);
 
-		//skybox_draw(&cam);
+		skybox_draw(&cam, &shader);
 
-		//cube_draw(&c, &shader);
+		cube_draw(&c, &shader);
 		scene_draw(scene, numMeshes, &shader);
 		
 		glfwSwapBuffers(window);
@@ -181,9 +177,6 @@ const Camera_t *getCamera(void)
 
 void cleanup(void)
 {
-	//free(scene);
-	//scene = NULL;
-
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
@@ -197,7 +190,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		printf("Path left blank or incorrect args, using default cube.");
+		printf("Path left blank or incorrect args, using default cube.\n");
 		modelPath = "model/chair.FBX";
 	}
 

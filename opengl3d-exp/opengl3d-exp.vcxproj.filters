@@ -33,9 +33,6 @@
     <ClCompile Include="Game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cube.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -60,20 +57,14 @@
     <ClCompile Include="Skybox.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lighting\DirectionalLight.c">
-      <Filter>Lighting</Filter>
+    <ClCompile Include="Shader.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lighting\LightManager.c">
-      <Filter>Lighting</Filter>
-    </ClCompile>
-    <ClCompile Include="lighting\PointLight.c">
-      <Filter>Lighting</Filter>
+    <ClCompile Include="Monitor.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -98,14 +89,11 @@
     <ClInclude Include="Skybox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lighting\DirectionalLight.h">
-      <Filter>Lighting</Filter>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lighting\LightManager.h">
-      <Filter>Lighting</Filter>
-    </ClInclude>
-    <ClInclude Include="lighting\PointLight.h">
-      <Filter>Lighting</Filter>
+    <ClInclude Include="Monitor.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

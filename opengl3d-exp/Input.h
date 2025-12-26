@@ -3,6 +3,10 @@
 
 #include <GLFW/glfw3.h>
 
+int input_keydown(int keycode);
+
+int input_keyup(int keycode);
+
 void input_init(void);
 
 void input_process(void);

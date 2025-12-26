@@ -60,10 +60,10 @@ Cube_t cube_new(float x, float y, float z)
 void doTransform(const Cube_t *c)
 {
 	float val = sin(glfwGetTime());
-	vec3 pos = { val, val, val };
-	vec3 axis = { 1.0f, 1.0f, 0.0f };
-	glm_translate(&transform[0], &pos[0]);
-	glm_rotate(&transform[0], glfwGetTime()*1000, &axis[0]);
+	vec3 pos = { 0.0f, val, 0.0f };
+	vec3 axis = { 0.0f, 1.0f, 0.0f };
+	glm_translate(&transform, &pos);
+	glm_rotate(&transform, glfwGetTime(), &axis);
 	//glm_scale(&transform[0], &scale);
 
 	shader_set_model(getShader(), &transform);
@@ -79,9 +79,15 @@ void endTransform(void)
 int i = 0;
 void cube_draw(const Cube_t *c, Shader_t *shader)
 {
+	shader_use(shader);
+
 	doTransform(c);
 	texture_use(c->texture);
+
 	glBindVertexArray(c->VAO);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
+
 	endTransform();
+
+	shader_usei(0);
 }

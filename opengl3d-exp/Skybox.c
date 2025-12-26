@@ -141,8 +141,10 @@ void skybox_setfull(const char *path)
 }
 
 static mat4 transform;
-void skybox_draw(const Camera_t *cam)
+void skybox_draw(const Camera_t *cam, const Shader_t *shader)
 {
+	shader_use(shader);
+
 	glm_translate(&transform, cam->position);
 
 	shader_set_model(getShader(), &transform);
@@ -156,4 +158,6 @@ void skybox_draw(const Camera_t *cam)
 
 	glm_mat4_identity(getShader()->model);
 	glm_mat4_identity(&transform[0]);
+
+	shader_usei(0);
 }

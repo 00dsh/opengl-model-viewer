@@ -19,8 +19,6 @@ Camera_t camera_new(float x, float y, float z, float pitch, float yaw);
 
 void camera_update(Camera_t *cam, Shader_t *shader);
 
-void camera_rot(Camera_t *cam, float speed);
-
 void camera_up(Camera_t *cam, float speed);
 
 void camera_down(Camera_t *cam, float speed);
